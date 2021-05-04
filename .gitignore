@@ -1,6 +1,6 @@
 # Ignore folders and files
 runs/
-trained_model/pytorch_model.bin
+trained_model/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

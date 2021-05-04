@@ -1,5 +1,5 @@
 {
-  "_name_or_path": "gpt2-medium",
+  "_name_or_path": "gpt2",
   "activation_function": "gelu_new",
   "architectures": [
     "GPT2LMHeadModel"
@@ -13,13 +13,11 @@
   "layer_norm_epsilon": 1e-05,
   "model_type": "gpt2",
   "n_ctx": 1024,
-  "n_embd": 1024,
-  "n_head": 16,
+  "n_embd": 768,
+  "n_head": 12,
   "n_inner": null,
-  "n_layer": 24,
+  "n_layer": 12,
   "n_positions": 1024,
-  "n_special": 0,
-  "predict_special_tokens": true,
   "resid_pdrop": 0.1,
   "summary_activation": null,
   "summary_first_dropout": 0.1,
