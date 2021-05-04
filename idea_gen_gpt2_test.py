@@ -2,6 +2,7 @@ import json
 from transformers import pipeline
 from transformers import TFGPT2LMHeadModel, GPT2Tokenizer
 
+idea_list = []
 model_path = './models'
 model_name = 'gpt2'
 
