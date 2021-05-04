@@ -1,9 +1,14 @@
 import os
 import openai
 
-OPENAI_API_KEY = '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'
+input_text = 'Make a game that'
+engine_name = 'davinci'
+key_path = 'keys/gpt3_keys.json'
 
-openai.api_key = OPENAI_API_KEY
-response = openai.Completion.create(engine="davinci", prompt="Make a startup that", max_tokens=32)
+if __name__ == '__main__':
+    with open(key_path) as f:
+        data = json.load(f)
+    api_key = data["api_key"]
 
-print(f'\nresponse :\n{response}')
+    openai.api_key = api_key
+    response = openai.Completion.create(engine=engine_name, prompt=input_text, max_tokens=128)

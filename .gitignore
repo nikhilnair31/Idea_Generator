@@ -1,6 +1,7 @@
 # Ignore folders and files
 runs/
-trained_model/
+models/
+keys/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
