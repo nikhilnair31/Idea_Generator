@@ -1,8 +1,4 @@
-import json
 import time
-import random
-import pandas as pd
-import tensorflow as tf
 from transformers import pipeline
 from transformers import TFGPT2LMHeadModel, GPT2Tokenizer
 import firebase_admin
