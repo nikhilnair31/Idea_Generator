@@ -8,6 +8,7 @@ cred = credentials.Certificate('keys/ideahub31-firebase-adminsdk-yl59k-f6da5b263
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 model_paths = ['./models/Startup_Ideas_model', './models/AppIdeas_model', './models/gameideas_model']
+tags = ['startup', 'apps', 'games']
 model_name = 'gpt2-medium' # gpt2, gpt2-medium, 
 max_len = 150
 num_return_sequences = 10
@@ -18,7 +19,9 @@ def game_idea_pipeline():
 
 def game_idea_generate():
     # model_path = random.choice(model_paths)
-    model_path = model_paths[0]
+    whichThing = 0
+    tagPicked = tags[whichThing]
+    model_path = model_paths[whichThing]
     model = TFGPT2LMHeadModel.from_pretrained(model_path, from_pt=True)
     tokenizer = GPT2Tokenizer.from_pretrained(model_name)
     input_ids = tokenizer.encode("<|title|>", add_special_tokens=True, return_tensors='tf')
@@ -32,14 +35,15 @@ def game_idea_generate():
 
     for i, beam in enumerate(generated_text_samples):
         decoded_idea = tokenizer.decode(beam, skip_special_tokens=True)
-        firestore_push(decoded_idea[9:])
+        firestore_push(decoded_idea[9:], tagPicked)
         print(f'{i}: {decoded_idea[9:]}\n')
 
-def firestore_push(idea_text):
+def firestore_push(idea_text, tag_text):
     doc_ref = db.collection('generated').add({
         'displayName': 'GPT2-Bot', 
         'uid': 'DFUxm8vnMgGKBh6AsZCcjXpek57H', 
         'idea': idea_text, 
+        'tag': tag_text, 
         'upvotes': 0, 
         'utc': int(time.time())
     })
