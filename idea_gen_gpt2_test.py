@@ -8,9 +8,9 @@ cred = credentials.Certificate('keys/ideahub31-firebase-adminsdk-yl59k-f6da5b263
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 model_paths = ['./models/Startup_Ideas_model', './models/AppIdeas_model', './models/gameideas_model']
-tags = ['startup', 'apps', 'games']
+tags = ['startup', 'app', 'game']
 model_name = 'gpt2-medium' # gpt2, gpt2-medium, 
-max_len = 150
+max_len = 80
 num_return_sequences = 10
 
 def game_idea_pipeline():
@@ -19,7 +19,7 @@ def game_idea_pipeline():
 
 def game_idea_generate():
     # model_path = random.choice(model_paths)
-    whichThing = 0
+    whichThing = 2
     tagPicked = tags[whichThing]
     model_path = model_paths[whichThing]
     model = TFGPT2LMHeadModel.from_pretrained(model_path, from_pt=True)
