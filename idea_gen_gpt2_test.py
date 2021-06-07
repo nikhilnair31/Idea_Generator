@@ -41,7 +41,7 @@ def game_idea_generate():
 def firestore_push(idea_text, tag_text):
     doc_ref = db.collection('generated').add({
         'displayName': 'GPT2-Bot', 
-        'uid': 'DFUxm8vnMgGKBh6AsZCcjXpek57H', 
+        'uid': '5aCGwn68JWUpOv3QSwduabVqqG62', #DFUxm8vnMgGKBh6AsZCcjXpek57H for GPT2
         'idea': idea_text, 
         'tag': tag_text, 
         'upvotes': 0, 
